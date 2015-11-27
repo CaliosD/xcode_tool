@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>network</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark - Networking
+
+- (void)requestForDataWithType:(TopicType)type
+{
+    [MLearningNetwork requestForHotTopicListSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        DLog(@"最热主题列表成功返回： \n %@ \n",operation.responseString);
+        [self handleSuccessResponseObject:responseObject];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        DLog(@"最热主题列表失败返回（错误代码%ld）：\n%@\n\n", (long)[error code], operation.responseString);
+        [self handleFailWithResponseObject:error];
+    }];
+}
+
+- (void)handleSuccessResponseObject:(id)responseObject
+{
+    if ([responseObject[@"status"] isEqualToString:@"1"]) {
+
+
+        [self.topicView reloadData];
+        [self.topicView.header endRefreshing];
+    }
+    else if ([responseObject[@"status"] isEqualToString:@"-1"]) {
+        
+        CXAlertView *alertView = [CXAlertView showAlertWithTitle:@"请求失败"
+                                                         andMessage:responseObject[@"msg"]
+                                                          andCancel:@"确定"];
+    }
+    else {
+        [CXAlertView showAlertWithTitle:@"请求失败"
+                                andMessage:responseObject[@"msg"]
+                                 andCancel:@"确定"];
+    }
+}
+
+- (void)handleFailWithResponseObject:(NSError *)error
+{
+    if ([error code] != -999) {
+        
+       [CXAlertView showAlertWithTitle:@"请求失败"
+                                andMessage:[MLearningNetwork kNetworkErrorMessage:error]
+                                 andCancel:@"确定"];
+
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>9BEF4F31-E234-4285-BB6F-F1F91277C32F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>Networking</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
