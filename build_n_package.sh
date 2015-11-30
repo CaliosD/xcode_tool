@@ -8,8 +8,8 @@ PROJECT_PATH=`pwd` # ``:將命令執行結果存入變量
 #TARGET_NAME=`basename $PROJECT_PATH` # basename DIR:獲取文件名；dirname DIR:取文件路徑
 TARGET_NAME="bjqcjxMLearning"
 BUILD_CONFIG="Release"
-CODE_SIGN="iPhone Distribution: BEIJING SIHETIANDI SCIENCE AND TECHNOLOGY CO., LTD."
-PROVISIONING_PROFILE="dd96f363-f67e-4831-90c2-870884c5175c"
+CODE_SIGN="iPhone Distribution: **** LTD."
+PROVISIONING_PROFILE="****"
 
 echo "------------------------ Let's move. ---------------------------"
 echo "Project path: $PROJECT_PATH"
