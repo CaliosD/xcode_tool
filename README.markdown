@@ -51,8 +51,7 @@ The author is Matt Gallagher. I got the code from [http://cocoawithlove.com/2009
 
 If you want a json lib, I recommend [JSONKit](https://github.com/johnezang/JSONKit) .As I know, it's faster than any other open source json libraries. You can get it using: 
 
-    ```
-    git clone https://github.com/johnezang/JSONKit.git
-    ```
+
+	git clone https://github.com/johnezang/JSONKit.git
 
 
